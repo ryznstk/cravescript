@@ -23,7 +23,7 @@ start_build_process() {
     repo sync ${SYNC_ARGS}
 
     log "Removing old device trees..."
-    rm -rf device/xiaomi/peridot vendor/xiaomi/peridot
+    rm -rf device/xiaomi/peridot
 
     log "Cloning device tree..."
     git clone --depth=1 -b evo \
@@ -31,7 +31,7 @@ start_build_process() {
         device/xiaomi/peridot
 
     log "Setting up build environment..."
-    source build/envsetup.sh
+    . build/envsetup.sh
 
     log "Selecting lunch target..."
     lunch lineage_peridot-cp2a-user
