@@ -31,6 +31,8 @@ start_build_process() {
         device/xiaomi/peridot
 
     log "Setting up build environment..."
+    export NINJA_ARGS="-j16"
+    export SISO_ARGS="-j16"
     . build/envsetup.sh
 
     log "Selecting lunch target..."
