@@ -18,6 +18,9 @@ start_build_process() {
             --depth=1
     fi
 
+    log "Removing local manifests..."
+rm -rf .repo/local_manifests
+
     log "Syncing sources..."
     /opt/crave/resync.sh
     repo sync ${SYNC_ARGS}
