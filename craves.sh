@@ -19,7 +19,7 @@ start_build_process() {
     fi
 
     log "Removing local manifests..."
-rm -rf .repo/local_manifests
+    rm -rf .repo/local_manifests
 
     log "Syncing sources..."
     /opt/crave/resync.sh
@@ -34,8 +34,6 @@ rm -rf .repo/local_manifests
         device/xiaomi/peridot
 
     log "Setting up build environment..."
-    export NINJA_ARGS="-j16"
-    export SISO_ARGS="-j16"
     . build/envsetup.sh
 
     log "Selecting lunch target..."
@@ -44,7 +42,9 @@ rm -rf .repo/local_manifests
     log "Starting Evolution-X build..."
     START=$(date +%s)
 
-    m evolution 2>&1 | tee log.txt
+    make installclean
+
+    m evolution -j12
 
     END=$(date +%s)
     log "Build completed in $((END - START)) seconds."
