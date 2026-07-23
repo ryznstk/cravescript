@@ -44,7 +44,7 @@ start_build_process() {
 
     make installclean
 
-    m evolution -j12
+    m evolution
 
     END=$(date +%s)
     log "Build completed in $((END - START)) seconds."
